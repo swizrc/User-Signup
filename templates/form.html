@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="/welcome" method='post'>
+	<label>
+		Username: <input type="text" name="username" value="{{ username }}">
+	</label>
+	{% if usererror == "empty" %}
+		<span style="color:red;"> Nothing is here</span>
+	{% endif %}
+	{% if usererror == "whitespace" %}
+		<span style="color:red;"> You cannot have white space</span>
+	{% endif %}
+	{% if usererror == "short" %}
+		<span style="color:red;"> Cannot be less than 3 characters!</span>
+	{% endif %}
+	{% if usererror == "long" %}
+		<span style="color:red;"> Cannot be more than 20 characters!</span>
+	{% endif %}
+	<br>
+	<label>
+		Password: <input type="password" name="pwd">
+	</label>
+	{% if pwderror == "empty" %}
+		<span style="color:red;"> Nothing is here</span>
+	{% endif %}
+	{% if pwderror == "whitespace" %}
+		<span style="color:red;"> You cannot have white space</span>
+	{% endif %}
+	{% if pwderror == "short" %}
+		<span style="color:red;"> Cannot be less than 3 characters!</span>
+	{% endif %}
+	{% if pwderror == "long" %}
+		<span style="color:red;"> Cannot be more than 20 characters!</span>
+	{% endif %}
+	{% if pwderror == "mismatch" %}
+		<span style="color:red;"> Password does not match verify password!</span>
+	{% endif %}
+	<br>
+	<label>
+		Verify Password: <input type="password" name="vpwd">
+	</label>
+	{% if vpwderror == "empty" %}
+		<span style="color:red;"> Nothing is here</span>
+	{% endif %}
+	{% if vpwderror == "mismatch" %}
+		<span style="color:red;"> Verify password does not match password!</span>
+	{% endif %}
+	<br>
+	<label>
+		Email (optional): <input type="text" name="email" value="{{ email }}">
+	</label>
+	{% if emailerror == "format" %}
+		<span style="color:red;"> Check your email format: contains a single '@', a single '.', no spaces</span>
+	{% endif %}
+	{% if emailerror == "badchar" %}
+		<span style="color:red;"> Emails must be between 3 and 20 characters</span>
+	{% endif %}
+	<br>
+	<input type="submit" value="Submit">
+</form>
+{% endblock %}
