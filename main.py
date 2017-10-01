@@ -55,9 +55,9 @@ def welcome():
 					spaces = True
 				if not((ord(letter) > 64 and ord(letter) < 91) or (ord(letter) > 96 and ord(letter) < 123) or (ord(letter) > 47 and ord(letter) < 58)) and letter != '@' and letter != ".":
 					other = True
-			if spaces == True or at_count != 1 or dot_count != 1 or other == True:
-				emailerror = "format"
-				errors = True
+		if spaces == True or at_count != 1 or dot_count != 1 or other == True:
+			emailerror = "format"
+			errors = True
 	
 	#Error case: username or password contains whitespace, or is less than 3 characters or greater than 20 characters
 	if username.find(" ") != -1 or password.find(" ") != -1 or len(username) < 3 or len(password) < 3 or len(username) > 20 or len(password) > 20:
